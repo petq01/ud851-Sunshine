@@ -48,8 +48,8 @@ class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ForecastAdapt
      * The interface that receives onClick messages.
      */
     public interface ForecastAdapterOnClickHandler {
-//      TODO (36) Refactor onClick to accept a long as its parameter rather than a String
-        void onClick(String weatherForDay);
+        //      TODO (36) Refactor onClick to accept a long as its parameter rather than a String
+        void onClick(long weatherForDay);
     }
 
     private Cursor mCursor;
@@ -57,7 +57,7 @@ class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ForecastAdapt
     /**
      * Creates a ForecastAdapter.
      *
-     * @param context Used to talk to the UI and app resources
+     * @param context      Used to talk to the UI and app resources
      * @param clickHandler The on-click handler for this adapter. This single handler is called
      *                     when an item is clicked.
      */
@@ -178,8 +178,12 @@ class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ForecastAdapt
         @Override
         public void onClick(View v) {
 //          TODO (37) Instead of passing the String for the clicked item, pass the date from the cursor
-            String weatherForDay = weatherSummary.getText().toString();
-            mClickHandler.onClick(weatherForDay);
+            int adapterPosition = getAdapterPosition();
+            mCursor.moveToPosition(adapterPosition);
+
+            long dateInMilis = mCursor.getLong(MainActivity.INDEX_WEATHER_DATE);
+
+            mClickHandler.onClick(dateInMilis);
         }
     }
 }

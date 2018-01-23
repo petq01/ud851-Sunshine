@@ -219,10 +219,23 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapterOn
             mForecastAdapter.setWeatherData(null);
             loadWeatherData();
             return true;
+        } else if (id == R.id.action_map) {
+
+            Uri.Builder uriBuild = new Uri.Builder().scheme("geo").appendQueryParameter("q","Ruse, Bulgaria");
+            showMap(uriBuild.build());
+            return true;
         }
 
         // TODO (2) Launch the map when the map menu item is clicked
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void showMap(Uri geoLocation) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(geoLocation);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 }

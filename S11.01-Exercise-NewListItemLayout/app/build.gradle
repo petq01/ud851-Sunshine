@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "com.example.android.sunshine"
@@ -24,9 +24,8 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:25.1.0'
-
-    compile 'com.android.support:recyclerview-v7:25.0.1'
-    compile 'com.android.support:preference-v7:25.0.1'
+    compile 'com.android.support:recyclerview-v7:25.1.0'
+    compile 'com.android.support:preference-v7:25.1.0'
 
 //  TODO (1) Add the ConstraintLayout dependency to your project
 
@@ -38,4 +37,5 @@ dependencies {
     androidTestCompile 'com.android.support:support-annotations:25.1.0'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support.test:rules:0.5'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }
